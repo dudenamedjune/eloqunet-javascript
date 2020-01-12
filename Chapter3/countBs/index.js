@@ -6,3 +6,5 @@ const countChar = (string, charToFind) => string.split('').reduce((accum, curr) 
 
 
 module.exports = countChar;
+
+
