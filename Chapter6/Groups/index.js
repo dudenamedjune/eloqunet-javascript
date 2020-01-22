@@ -4,17 +4,26 @@ class Group {
     }
 
     add(value) {
-        if(set.indexOf(value) > -1){
+        if(this.set.indexOf(value) > -1){
             return;
         }
         this.set.push(value);
     }
 
-    delete() {
-
+    delete(value) {
+        this.set = this.set.filter((x) => x !== value);
     }
 
-    has() {
-
+    has(value) {
+        return this.set.includes(value)
     }
+    static from(obj) {
+        const newGroup = new Group();
+        obj.forEach(element => {
+           newGroup.add(element); 
+        });
+        return newGroup;
+    } 
 }
+
+module.exports = Group;
