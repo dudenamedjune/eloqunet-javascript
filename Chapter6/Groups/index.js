@@ -24,6 +24,25 @@ class Group {
         });
         return newGroup;
     } 
+
+    [Symbol.iterator]() {
+        return new GroupIterator(this);
+     }
+}
+
+
+class GroupIterator {
+    constructor(group) {
+       this.group = group; 
+       this.index = 0;
+    }
+
+    next() {
+        if(this.group.set.length <= this.index) return { done: true }
+        const value = { value: this.group.set[this.index], done: false }
+        this.index += 1;
+        return value;
+    }
 }
 
 module.exports = Group;

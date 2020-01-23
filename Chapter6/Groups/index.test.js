@@ -41,4 +41,14 @@ describe('Group', () => {
         expect(test.has(3)).toEqual(true);
         expect(test.set).toEqual([1, 2, 3, 4, 5, 6, 7]);
     });
+
+    it('iterates over the group', () => {
+        const mock = jest.fn();
+        for(let x of Group.from([1, 2, 3])){
+           mock(x); 
+        }
+        expect(mock).toHaveBeenNthCalledWith(1, 1);
+        expect(mock).toHaveBeenNthCalledWith(2, 2);
+        expect(mock).toHaveBeenNthCalledWith(3, 3);
+    });
 });
