@@ -40,6 +40,7 @@ class GroupIterator {
     next() {
         if(this.group.set.length <= this.index) return { done: true }
         const value = { value: this.group.set[this.index], done: false }
+ 
         this.index += 1;
         return value;
     }
